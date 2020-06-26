@@ -14,7 +14,7 @@ class CVPageTest(unittest.TestCase):
         ## enter cv page
         self.browser.get("http://127.0.0.1:8000")
         ## click on cv button
-        cv_button = self.browser.find_element_by_tag_name("cv_button")
+        cv_button = self.browser.find_element_by_id("cv_button")
         cv_button.click()
         ## click on update
         ## enter some text

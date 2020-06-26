@@ -41,4 +41,4 @@ def post_edit(request, pk):
     return render(request, "blog/post_edit.html", {"form": form})
 
 def view_cv(request):
-    pass
+    return render(request, "blog/cv.html")

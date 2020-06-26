@@ -10,3 +10,7 @@ class CVPageTest(TestCase):
     def test_cv_url_resolves_to_cv_page_view(self):
         found = resolve("/cv")
         self.assertEqual(found.func, view_cv)
+    
+    def test_uses_cv_page_template(self):
+        response = self.client.get("/cv")
+        self.assertTemplateUsed(response, "blog/cv.html")
