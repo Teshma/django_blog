@@ -17,3 +17,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+## TODO CV sections (maybe display cv as a page showing all the sections like the post_list page)
+class CV(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    

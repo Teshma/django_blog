@@ -16,7 +16,13 @@ class CVPageTest(unittest.TestCase):
         ## click on cv button
         cv_button = self.browser.find_element_by_id("cv_button")
         cv_button.click()
+        ## on cv page
+        self.assertIn("cv", self.browser.current_url)
         ## click on update
+        edit_cv_button = self.browser.find_element_by_id("edit_cv_button")
+        edit_cv_button.click()
+        ## landed on update cv page
+        self.assertIn("cv/edit", self.browser.current_url)
         ## enter some text
         ## save
         ## page redirects to the updated cv

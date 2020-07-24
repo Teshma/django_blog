@@ -42,3 +42,6 @@ def post_edit(request, pk):
 
 def view_cv(request):
     return render(request, "blog/cv.html")
+
+def edit_cv(request):
+    pass
