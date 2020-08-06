@@ -1,5 +1,10 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-<a id="edit_cv_button" href="{% url 'edit_cv' %}"><span class="glyphicon glyphicon-pencil"></span> Edit CV </a>
+    
+    {% if cv is False %}
+        <a id="new_cv_button" href="{% url 'new_cv' %}"><span class="glyphicon glyphicon-plus"></span> New CV</a>
+    {% endif %}
+    <!-- need to display cv if there is one-->
+    
 {% endblock %}

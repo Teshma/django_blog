@@ -18,8 +18,27 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-## TODO CV sections (maybe display cv as a page showing all the sections like the post_list page)
+##  CV sections (maybe display cv as a page showing all the sections like the post_list page)
 class CV(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    
+    #author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200, default="My CV")
+    first_section = models.CharField(max_length=200, default="Personal Profile", blank=True)
+    first_section_text = models.TextField(blank=True)
+    second_section = models.CharField(max_length=200, default="Education", blank=True)
+    second_section_text = models.TextField(blank=True)
+    third_section = models.CharField(max_length=200, default="Technical Skills", blank=True)
+    third_section_text = models.TextField(blank=True)
+    fourth_section = models.CharField(max_length=200, default="Key Skills", blank=True)
+    fourth_section_text = models.TextField(blank=True)
+    fifth_section = models.CharField(max_length=200, default="Experience", blank=True)
+    fifth_section_text = models.TextField(blank=True)
+    sixth_section = models.CharField(max_length=200, default="Projects", blank=True)
+    sixth_section_text = models.TextField(blank=True)
+    seventh_section = models.CharField(max_length=200, default="Interest/Hobbies", blank=True)
+    seventh_section_text = models.TextField(blank=True)
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.title
