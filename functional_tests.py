@@ -20,19 +20,26 @@ class CVPageTest(unittest.TestCase):
         cv_button.click()
         ## on cv page
         self.assertIn("cv", self.browser.current_url)
+        ## check if cv already exists
+        delete_cv_button = self.browser.find_element_by_id("delete_cv_button")
+        if delete_cv_button:
+            delete_cv_button.click()
         ## click on new
         new_cv_button = self.browser.find_element_by_id("new_cv_button")
         new_cv_button.click()
         ## landed on new cv page
         self.assertIn("cv/new", self.browser.current_url)
         ## enter some text
-        title_input_box = self.browser.find_element_by_id("id_title")
-        title_input_box.send_keys("My CV")
-        title_input_box.send_keys("Enter")
+        first_section_text_box = self.browser.find_element_by_id("id_first_section_text")
+        first_section_text_box.send_keys("Personal Profile Text")
         ## save
         save_button = self.browser.find_element_by_id("id_save_button")
         save_button.click()
         ## page redirects to the updated cv
+        self.assertIn("cv", self.browser.current_url)
+        ## cv has been saved and is viewable
+        title = self.browser.find_element_by_id("title").text
+        self.assertIn("My CV", title)
 
         
 

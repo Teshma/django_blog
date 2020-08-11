@@ -8,5 +8,6 @@ urlpatterns = [
     path("post/<int:pk>/edit", views.post_edit, name="post_edit"),
     path("cv", views.view_cv, name="view_cv"),
     path("cv/new", views.new_cv, name="new_cv"),
-    path("cv/edit", views.edit_cv, name="edit_cv")
+    path("cv/edit", views.edit_cv, name="edit_cv"),
+    path("cv/delete", views.delete_cv, name="delete_cv"),
 ]

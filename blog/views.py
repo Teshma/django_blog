@@ -42,8 +42,12 @@ def post_edit(request, pk):
 
 ##TODO
 def view_cv(request):
-    cv = CV.objects.first() or False
-    return render(request, "blog/cv.html", {"cv": cv})
+    cv = CV.objects.first()
+    print(cv)
+    if cv:
+        return render(request, "blog/cv.html", {"cv": cv})
+    else:
+        return render(request, "blog/cv.html", {"cv": False})
 
 def new_cv(request):
     if request.method == "POST":
@@ -55,7 +59,11 @@ def new_cv(request):
             return redirect("view_cv")
     else:
         form = CVForm()
-    return render(request, "blog/cv.html", {"form": form})
+    return render(request, "blog/cv_edit.html", {"form": form})
 
-def edit_cv(request, pk):
+def edit_cv(request):
     return render(request, "blog/cv.html")
+
+def delete_cv(request):
+    CV.objects.first().delete()
+    return redirect("view_cv")

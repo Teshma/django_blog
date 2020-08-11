@@ -1,10 +1,29 @@
 {% extends "blog/base.html" %}
+{% load markdown_deux_tags %}
 
 {% block content %}
     
     {% if cv is False %}
         <a id="new_cv_button" href="{% url 'new_cv' %}"><span class="glyphicon glyphicon-plus"></span> New CV</a>
+    {% elif cv %}
+    <a id="edit_cv_button" href="{% url 'edit_cv' %}"><span class="glyphicon glyphicon-pencil"></span> Edit CV</a>
+    <a id="delete_cv_button" href="{% url 'delete_cv' %}"><span class="glyphicon glyphicon-minus"></span> Delete CV</a>
+        <div class="CV">
+            <h2 id="title">{{cv.title}}</h2>
+            <h3 id="first_section">{{cv.first_section}}</h3>
+            <p id="first_section_text">{{cv.first_section_text|markdown}}</p>
+            <h3 id="second_section">{{cv.second_section}}</h3>
+            <p id="second_section_text">{{cv.second_section_text|markdown}}</p>
+            <h3 id="third_section">{{cv.third_section}}</h3>
+            <p id="third_section_text">{{cv.third_section_text|markdown}}</p>
+            <h3 id="fourth_section">{{cv.fourth_section}}</h3>
+            <p id="fourth_section_text">{{cv.fourth_section_text|markdown}}</p>
+            <h3 id="fifth_section">{{cv.fifth_section}}</h3>
+            <p id="fifth_section_text">{{cv.fifth_section_text|markdown}}</p>
+            <h3 id="sixth_section">{{cv.sixth_section}}</h3>
+            <p id="sixth_section_text">{{cv.sixth_section_text|markdown}}</p>
+            <h3 id="seventh_section">{{cv.seventh_section}}</h3>
+            <p id="seventh_section_text">{{cv.seventh_section_text|markdown}}</p>
+        </div>
     {% endif %}
-    <!-- need to display cv if there is one-->
-    
 {% endblock %}
