@@ -21,7 +21,6 @@ class CVPageTest(TestCase):
         found = resolve("/cv/edit")
         self.assertEqual(found.func, views.edit_cv)
 
-    ##TODO
     def test_can_create_new_cv(self):
         form = CVForm(data={"title": "my cv"})
         if form.is_valid():
@@ -30,10 +29,3 @@ class CVPageTest(TestCase):
         else:
             self.assertEqual(form.errors, 0)
         self.assertEqual(CV.objects.count(), 1)
-    
-    """ def test_add_cv_section_on_edit_cv_page(self):
-        response = self.client.get("/cv/edit", d ata = {"section_text": "test"})
-
-        self.assertEqual(CVSection.objects.count(), 1)
-        cv_section = CVSection.objects.first()
-        self.assertEqual(cv_section.text, "test") """

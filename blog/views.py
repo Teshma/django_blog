@@ -43,7 +43,6 @@ def post_edit(request, pk):
 ##TODO
 def view_cv(request):
     cv = CV.objects.first()
-    print(cv)
     if cv:
         return render(request, "blog/cv.html", {"cv": cv})
     else:
@@ -62,7 +61,17 @@ def new_cv(request):
     return render(request, "blog/cv_edit.html", {"form": form})
 
 def edit_cv(request):
-    return render(request, "blog/cv.html")
+    cv = CV.objects.first()
+    print(cv)
+    if request.method == "POST":
+        form = CVForm(request.POST, instance=cv)
+        if form.is_valid():
+            cv = form.save(commit=False)
+            cv.save()
+            return redirect("view_cv")
+    else:
+        form = CVForm(instance=cv)    
+    return render(request, "blog/cv_edit.html", {"form": form})
 
 def delete_cv(request):
     CV.objects.first().delete()
